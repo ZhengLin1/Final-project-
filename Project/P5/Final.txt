@@ -1,0 +1,263 @@
+var images = [];
+var Tree = [];
+var Ba = [];
+var Bv = [];
+var Leaves = [];
+var imagesv = [];
+var imagesh = [];
+var nest = [];
+var end = [];
+
+var ix= 100;
+var iy= 190;
+var iw= 20;
+var ih= 50;
+
+var iix= 180;
+var iiy= 90;
+var iiw= 20;
+var iih= 90;
+
+var iiix= 260;
+var iiiy= 90;
+var iiiw= 20;
+var iiih=150;
+
+var iiiix= 450;
+var iiiiy= 90;
+var iiiiw= 20;
+var iiiih=80;
+
+var ivx= 350;
+var ivy= 90;
+var ivw= 20;
+var ivh=80;
+
+var hx= 150;
+var hy=80;
+var hw = 130;
+var hh=30;
+
+var hhx= 110;
+var hhy=220;
+var hhw = 60;
+var hhh=30;
+
+var hhhx= 260;
+var hhhy=210;
+var hhhw = 300;
+var hhhh=40;
+
+var hhhhx= 350;
+var hhhhy=160;
+var hhhhw = 100;
+var hhhhh=20;
+
+var hvx= 470;
+var hvy=100;
+var hvw = 140;
+var hvh=20;
+
+var eggx=0;
+var eggy=0;
+
+var Leavesx = 110;
+var Leavesy = 170;
+var Lwidth = 90;
+var Lheight = 30;
+
+var LLeavesx = 220;
+var LLeavesy = 380;
+var LLwidth = 90;
+var LLheight = 30;
+
+var vLocx = 300;
+var vLocy = 290;
+var vwidth = 20;
+var vheight = 100;
+
+var vvLocx = 470;
+var vvLocy = 220;
+var vvwidth = 20;
+var vvheight = 190;
+
+
+
+var aLocx = 0;
+var aLocy = 290;
+var move = 5;
+var awidth = 400;
+var aheight = 50;
+
+var aaLocx = 0;
+var aaLocy = 100;
+var aawidth = 80;
+var aaheight = 25;
+
+var nLocx = 540;
+var nLocy = 400;
+var nwidth = 80;
+var nheight = 80;
+
+
+function preload(){
+ for(var i = 1; i < 9; i++){
+	 images[i]=loadImage("Eggman0000" + i + ".png");
+	}///////////////////////////////////the eggman
+ for(var i = 1; i < 3; i++){
+	 Tree[i]=loadImage("Tree00000" + i + ".png");
+ }/////////////////////////////////////tree
+ for(var i = 1; i < 4; i++){
+	 Ba[i]=loadImage("Brancha00000" + i + ".png");
+ }//////////////////////////////////////Branch a
+  for(var i = 1; i < 4; i++){
+	 Bv[i]=loadImage("Branchv00000" + i + ".png");
+ }//////////////////////////////////////Branch v	
+	for(var i = 1; i < 4; i++){
+		Leaves[i] =loadImage("Leaves0000"+i+".png");
+	}////////////////////////////////////////////
+	for(var i = 1; i < 5; i++){
+		nest[i] = loadImage("nest00000" + i + ".png");
+	}////////////////////////////////////////////
+	imagesv = loadImage("Vertical00001.png");
+	imagesh = loadImage("Horizontal00001.png");
+	end = loadImage("End0001.png");
+}
+
+var currentImageIndex = 1
+var treeCurrentImageIndex = 1
+var baCurrentImageIndex = 1
+var bvCurrentImageIndex = 1
+var leavesCurrentImageIndex = 1
+var nestCurrentImageIndex = 1
+
+function setup(){
+createCanvas(620,500);
+frameRate(12)
+}
+
+function draw(){
+	background(229,255,204);
+	noFill();
+	rect(0,0,619,499);
+	image(imagesv,ix,iy,iw,ih);
+	image(imagesv,iix,iiy,iiw,iih);
+	image(imagesv,iiix,iiiy,iiiw,iiih);
+	image(imagesv,iiiix,iiiiy,iiiiw,iiiih);
+	image(imagesv,ivx,ivy,ivw,ivh);
+	image(imagesh,hx,hy,hw,hh);
+	image(imagesh,hhx,hhy,hhw,hhh);
+	image(imagesh,hhhx,hhhy,hhhw,hhhh);
+	image(imagesh,hhhhx,hhhhy,hhhhw,hhhhh);
+	image(imagesh,hvx,hvy,hvw,hvh);
+	image(images[currentImageIndex],eggx,eggy,35,35);
+	currentImageIndex++;
+	if (currentImageIndex > 8){
+		currentImageIndex = 1
+	}//////////////////////////////////////////////////////
+	image(Tree[treeCurrentImageIndex], 80,400,60,90);
+	treeCurrentImageIndex++;
+	if (treeCurrentImageIndex > 2){
+		treeCurrentImageIndex = 1
+	}/////////////////////////////////////////////////////
+	image(Ba[baCurrentImageIndex], aLocx,aLocy,awidth,aheight);
+	baCurrentImageIndex++;
+	if(baCurrentImageIndex > 3){
+		baCurrentImageIndex = 1
+	}/////////////////////////////////////////////////////
+	image(Ba[baCurrentImageIndex], aaLocx,aaLocy,aawidth,aaheight);
+	baCurrentImageIndex++;
+	if(baCurrentImageIndex > 3){
+		baCurrentImageIndex = 1
+	}/////////////////////////////////////////////////////
+
+	image(Bv[bvCurrentImageIndex], vLocx,vLocy,vwidth,vheight);
+	bvCurrentImageIndex++;
+	if(bvCurrentImageIndex > 3){
+		bvCurrentImageIndex = 1
+	}/////////////////////////////////////////////////////
+	image(Bv[bvCurrentImageIndex], vvLocx,vvLocy,vvwidth,vvheight);
+	bvCurrentImageIndex++;
+	if(bvCurrentImageIndex > 3){
+		bvCurrentImageIndex = 1
+	}/////////////////////////////////////////////////////
+	image(Leaves[leavesCurrentImageIndex],Leavesx,Leavesy,Lwidth,Lheight);
+	leavesCurrentImageIndex++;
+	if(leavesCurrentImageIndex > 3){
+		leavesCurrentImageIndex = 1
+	}////////////////////////////////////////////////////
+	image(nest[nestCurrentImageIndex],nLocx,nLocy,nwidth,nheight);
+	nestCurrentImageIndex++;
+	if(nestCurrentImageIndex > 4){
+		nestCurrentImageIndex = 1
+	}//////////////////////////////////////////////////////
+	image(Leaves[leavesCurrentImageIndex],LLeavesx,LLeavesy,LLwidth,LLheight);
+	leavesCurrentImageIndex++;
+	if(leavesCurrentImageIndex > 3){
+		leavesCurrentImageIndex = 1
+	}////////////////////////////////////////////////////
+
+
+	
+	if(eggx > aLocx - awidth && eggx < aLocx + awidth && eggy > aLocy - aheight && eggy < aLocy + aheight){
+		move = move*-1;
+	}
+		if(eggx > aaLocx - aawidth && eggx < aaLocx + aawidth && eggy > aaLocy - aaheight && eggy < aaLocy + aaheight){
+		move = move*-1;
+	}
+		if(eggx > ix - iw && eggx < ix + iw && eggy > iy - ih && eggy < iy + ih){
+		move = move*-1;
+	}
+		if(eggx > iix - iiw && eggx < iix + iiw && eggy > iiy - iih && eggy < iiy + iih){
+		move = move*-1;
+	}
+		if(eggx > iiix - iiiw && eggx < iiix + iiiw && eggy > iiiy - iiih && eggy < iiiy + iiih){
+		move = move*-1;
+	}
+		if(eggx > iiiix - iiiiw && eggx < iiiix + iiiiw && eggy > iiiiy - iiiih && eggy < iiiiy + iiiih){
+		move = move*-1;
+	}
+		if(eggx > ivx - ivw && eggx < ivx + ivw && eggy > ivy - ivh && eggy < ivy + ivh){
+		move = move*-1;
+	}
+		if(eggx > hx - hw && eggx < hx + hw && eggy > hy - hh && eggy < hy + hh){
+		move = move*-1;
+	}
+	
+		if(eggx > hhx - hhw && eggx < hhx + hhw && eggy > hhy - hhh && eggy < hhy + hhh){
+		move = move*-1;
+	}
+		if(eggx > hhhx - hhhw && eggx < hhhx + hhhw && eggy > hhhy - hhhh && eggy < hy + hh){
+		move = move*-1;
+	}
+		if(eggx > hhhhx - hhhhw && eggx < hhhhx + hhhhw && eggy > hhhhy - hhhhh && eggy < hhhhy + hhhhh){
+		move = move*-1;
+	}
+		if(eggx > hvx - hvw && eggx < hvx + hvw && eggy > hvy - hvh && eggy < hvy + hvh){
+		move = move*-1;
+	}
+	  if(eggx<width && eggx>width &&eggy>height &&eggy<height){
+		move = move*-1;
+	}
+		if(eggx>540&&eggy>400){
+			image(end,0,0,620,500);
+	}
+ 
+	 
+
+		
+}
+function keyPressed(){
+	if(keyCode == UP_ARROW  ){
+		eggy = eggy-move -6;
+	}
+	if(keyCode == DOWN_ARROW  ){
+		eggy = eggy+move +6;
+	}
+	if(keyCode == LEFT_ARROW  ){
+		eggx = eggx-move - 6;
+	}
+	if(keyCode == RIGHT_ARROW  ){
+		eggx = eggx+ move +6;
+	}	
+}
